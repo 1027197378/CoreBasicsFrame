@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NetCore.Model</name>
+    </assembly>
+    <members>
+        <member name="P:NetCore.Model.MessageModel`1.success">
+            <summary>
+            操作是否成功
+            </summary>
+        </member>
+        <member name="P:NetCore.Model.MessageModel`1.msg">
+            <summary>
+            返回的信息
+            </summary>
+        </member>
+        <member name="P:NetCore.Model.MessageModel`1.data">
+            <summary>
+            返回的数据
+            </summary>
+        </member>
+        <member name="T:NetCore.Model.Models.User">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NetCore.Model.Models.User.Name">
+            <summary>
+            姓名
+            </summary>
+        </member>
+    </members>
+</doc>

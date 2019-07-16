@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using NetCore.Model;
+using NetCoreBasicsFrame.AuthHelper.OverWrite;
 
 namespace NetCoreBasicsFrame.Controllers
 {
+    /// <summary>
+    /// Vule控制器
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class ValuesController : Controller
     {
         // GET api/values
         [HttpGet]
@@ -17,29 +23,44 @@ namespace NetCoreBasicsFrame.Controllers
             return new string[] { "value1", "value2" };
         }
 
+        /// <summary>
+        /// Get方法获取ID
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns></returns>
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        [Authorize(Roles = "Admin")]
+        public ActionResult<string> Get(string token,string id)
         {
-            return "value";
+            TokenModelJwt newmodel = JwtHelper.SerializableJwt(token);
+            return Json(newmodel);
         }
 
-        // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Route("GetJwtStr")]
+        public dynamic GetJwtStr(string loginName, string passWord)
         {
-        }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+            string jwtStr = string.Empty;
+            bool status = false;
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            if (loginName == "Admin" && passWord == "123")
+            {
+                TokenModelJwt tokenModel = new TokenModelJwt()
+                {
+                    Uid = 1,
+                    Role = "Admin",
+                    Work = "管理员"
+                };
+                jwtStr = JwtHelper.GetJwtToken(tokenModel);
+                status = true;
+            }
+            else
+            {
+                jwtStr = "验证失败！";
+            }
+            return Ok(new { success = status, data = jwtStr });
         }
     }
 }
