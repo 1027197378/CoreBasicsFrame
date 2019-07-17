@@ -10,11 +10,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.DotNet.PlatformAbstractions;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using NetCore.Model;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace NetCoreBasicsFrame
@@ -109,6 +111,8 @@ namespace NetCoreBasicsFrame
                  };
              });
             #endregion
+
+            services.AddDbContext<NetCoreBaseDBContext>(Options => Options.UseSqlServer(Configuration.GetConnectionString("SqlServer"), b => b.MigrationsAssembly("NetCore.BasicsFrame")));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

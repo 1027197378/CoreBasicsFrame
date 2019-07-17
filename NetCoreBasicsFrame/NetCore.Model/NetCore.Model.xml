@@ -19,14 +19,79 @@
             返回的数据
             </summary>
         </member>
-        <member name="T:NetCore.Model.Models.User">
+        <member name="T:NetCore.Model.Models.SYSUser">
             <summary>
-            
+            系统用户表
             </summary>
         </member>
-        <member name="P:NetCore.Model.Models.User.Name">
+        <member name="P:NetCore.Model.Models.SYSUser.UserID">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="P:NetCore.Model.Models.SYSUser.Name">
             <summary>
             姓名
+            </summary>
+        </member>
+        <member name="P:NetCore.Model.Models.SYSUser.LoginName">
+            <summary>
+            登陆账号
+            </summary>
+        </member>
+        <member name="P:NetCore.Model.Models.SYSUser.LoginPwd">
+            <summary>
+            登陆密码
+            </summary>
+        </member>
+        <member name="P:NetCore.Model.Models.SYSUser.Age">
+            <summary>
+            年龄
+            </summary>
+        </member>
+        <member name="P:NetCore.Model.Models.SYSUser.Phone">
+            <summary>
+            手机号码
+            </summary>
+        </member>
+        <member name="P:NetCore.Model.Models.SYSUser.Addrees">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="P:NetCore.Model.Models.SYSUser.LastLoginTime">
+            <summary>
+            最后登陆时间
+            </summary>
+        </member>
+        <member name="P:NetCore.Model.Models.SYSUser.CreatUser">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:NetCore.Model.Models.SYSUser.CreatTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:NetCore.Model.Models.SYSUser.UpdateUser">
+            <summary>
+            修改人
+            </summary>
+        </member>
+        <member name="P:NetCore.Model.Models.SYSUser.UpdateTime">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:NetCore.Model.Models.SYSUser.test">
+            <summary>
+            测试
+            </summary>
+        </member>
+        <member name="P:NetCore.Model.NetCoreBaseDBContext.SYSUser">
+            <summary>
+            系统用户表
             </summary>
         </member>
     </members>

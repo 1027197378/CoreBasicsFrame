@@ -27,6 +27,7 @@ namespace NetCoreBasicsFrame.Controllers
         /// Get方法获取ID
         /// </summary>
         /// <param name="id">ID</param>
+        /// <param name="token">token</param>
         /// <returns></returns>
         // GET api/values/5
         [HttpGet("{id}")]
