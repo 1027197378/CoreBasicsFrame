@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NetCore.Model;
+using NetCore.Model.Models;
+using NetCore.Repository.BaseRepository;
 using NetCoreBasicsFrame.AuthHelper.OverWrite;
 
 namespace NetCoreBasicsFrame.Controllers
@@ -16,6 +18,7 @@ namespace NetCoreBasicsFrame.Controllers
     [ApiController]
     public class ValuesController : Controller
     {
+        NetCoreBaseDBContext mycontex;
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
@@ -31,11 +34,16 @@ namespace NetCoreBasicsFrame.Controllers
         /// <returns></returns>
         // GET api/values/5
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin")]
-        public ActionResult<string> Get(string token,string id)
+        public ActionResult Get(string id)
         {
-            TokenModelJwt newmodel = JwtHelper.SerializableJwt(token);
-            return Json(newmodel);
+            //BaseRepository<SYSUser> my = new BaseRepository<SYSUser>();
+            SYSUser myUser = new SYSUser();
+            Guid myid = new Guid(id);
+            myUser = mycontex.Set<SYSUser>().Where(u => u.UserID == myid).FirstOrDefault();
+
+            //Task<SYSUser> myUser = my.QueryById(id);
+            return Json(myUser);
+            //6F9619FF-8B86-D011-B42D-00C04FC964FF
         }
 
         [HttpPost]

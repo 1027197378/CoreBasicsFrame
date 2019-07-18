@@ -4536,6 +4536,16 @@
           "bin/placeholder/NetCore.Common.dll": {}
         }
       },
+      "NetCore.IRepository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/NetCore.IRepository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/NetCore.IRepository.dll": {}
+        }
+      },
       "NetCore.IServices/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
@@ -4558,6 +4568,20 @@
         },
         "runtime": {
           "bin/placeholder/NetCore.Model.dll": {}
+        }
+      },
+      "NetCore.Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "NetCore.IRepository": "1.0.0",
+          "NetCore.Model": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/NetCore.Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/NetCore.Repository.dll": {}
         }
       }
     }
@@ -12289,6 +12313,11 @@
       "path": "../NetCore.Common/NetCore.Common.csproj",
       "msbuildProject": "../NetCore.Common/NetCore.Common.csproj"
     },
+    "NetCore.IRepository/1.0.0": {
+      "type": "project",
+      "path": "../NetCore.IRepository/NetCore.IRepository.csproj",
+      "msbuildProject": "../NetCore.IRepository/NetCore.IRepository.csproj"
+    },
     "NetCore.IServices/1.0.0": {
       "type": "project",
       "path": "../NetCore.IServices/NetCore.IServices.csproj",
@@ -12298,6 +12327,11 @@
       "type": "project",
       "path": "../NetCore.Model/NetCore.Model.csproj",
       "msbuildProject": "../NetCore.Model/NetCore.Model.csproj"
+    },
+    "NetCore.Repository/1.0.0": {
+      "type": "project",
+      "path": "../NetCore.Repository/NetCore.Repository.csproj",
+      "msbuildProject": "../NetCore.Repository/NetCore.Repository.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -12308,6 +12342,7 @@
       "NetCore.Common >= 1.0.0",
       "NetCore.IServices >= 1.0.0",
       "NetCore.Model >= 1.0.0",
+      "NetCore.Repository >= 1.0.0",
       "Swashbuckle.AspNetCore >= 4.0.1"
     ]
   },
@@ -12348,6 +12383,9 @@
             },
             "D:\\SourceCodeHouse\\NetCoreBasicsFrame\\NetCore.Model\\NetCore.Model.csproj": {
               "projectPath": "D:\\SourceCodeHouse\\NetCoreBasicsFrame\\NetCore.Model\\NetCore.Model.csproj"
+            },
+            "D:\\SourceCodeHouse\\NetCoreBasicsFrame\\NetCore.Repository\\NetCore.Repository.csproj": {
+              "projectPath": "D:\\SourceCodeHouse\\NetCoreBasicsFrame\\NetCore.Repository\\NetCore.Repository.csproj"
             }
           }
         }

@@ -21,6 +21,7 @@
     <ProjectReference Include="..\NetCore.Common\NetCore.Common.csproj" />
     <ProjectReference Include="..\NetCore.IServices\NetCore.IServices.csproj" />
     <ProjectReference Include="..\NetCore.Model\NetCore.Model.csproj" />
+    <ProjectReference Include="..\NetCore.Repository\NetCore.Repository.csproj" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

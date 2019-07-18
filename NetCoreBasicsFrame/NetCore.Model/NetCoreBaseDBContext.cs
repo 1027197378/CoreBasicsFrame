@@ -2,6 +2,7 @@
 using NetCore.Model.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace NetCore.Model
@@ -21,6 +22,7 @@ namespace NetCore.Model
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
         }
     }
 }

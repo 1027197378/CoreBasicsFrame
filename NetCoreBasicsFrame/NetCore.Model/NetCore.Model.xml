@@ -84,11 +84,6 @@
             修改时间
             </summary>
         </member>
-        <member name="P:NetCore.Model.Models.SYSUser.test">
-            <summary>
-            测试
-            </summary>
-        </member>
         <member name="P:NetCore.Model.NetCoreBaseDBContext.SYSUser">
             <summary>
             系统用户表
