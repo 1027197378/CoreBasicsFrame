@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BaseCore.InterFace;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -17,6 +18,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using NetCore.Model;
+using NetCore.Services;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace NetCoreBasicsFrame
@@ -111,6 +113,8 @@ namespace NetCoreBasicsFrame
                  };
              });
             #endregion
+
+            services.AddScoped<ISYSUser, SYSUserService>();
 
             services.AddDbContext<NetCoreBaseDBContext>(Options => Options.UseSqlServer(Configuration.GetConnectionString("SqlServer"), b => b.MigrationsAssembly("NetCore.BasicsFrame")));
         }

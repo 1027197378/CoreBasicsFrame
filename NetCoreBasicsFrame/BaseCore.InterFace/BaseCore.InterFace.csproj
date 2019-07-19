@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NetCore.IRepository\NetCore.IRepository.csproj" />
     <ProjectReference Include="..\NetCore.Model\NetCore.Model.csproj" />
   </ItemGroup>
 

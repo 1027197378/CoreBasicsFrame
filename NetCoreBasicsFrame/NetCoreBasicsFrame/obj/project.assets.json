@@ -4523,6 +4523,19 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
+      "BaseCore.InterFace/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "NetCore.Model": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/BaseCore.InterFace.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BaseCore.InterFace.dll": {}
+        }
+      },
       "NetCore.Common/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
@@ -4534,26 +4547,6 @@
         },
         "runtime": {
           "bin/placeholder/NetCore.Common.dll": {}
-        }
-      },
-      "NetCore.IRepository/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v2.2",
-        "compile": {
-          "bin/placeholder/NetCore.IRepository.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/NetCore.IRepository.dll": {}
-        }
-      },
-      "NetCore.IServices/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v2.2",
-        "compile": {
-          "bin/placeholder/NetCore.IServices.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/NetCore.IServices.dll": {}
         }
       },
       "NetCore.Model/1.0.0": {
@@ -4570,18 +4563,18 @@
           "bin/placeholder/NetCore.Model.dll": {}
         }
       },
-      "NetCore.Repository/1.0.0": {
+      "NetCore.Services/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
-          "NetCore.IRepository": "1.0.0",
+          "BaseCore.InterFace": "1.0.0",
           "NetCore.Model": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/NetCore.Repository.dll": {}
+          "bin/placeholder/NetCore.Services.dll": {}
         },
         "runtime": {
-          "bin/placeholder/NetCore.Repository.dll": {}
+          "bin/placeholder/NetCore.Services.dll": {}
         }
       }
     }
@@ -7621,7 +7614,6 @@
       "path": "runtime.native.system/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.0/_._",
@@ -7650,7 +7642,6 @@
       "path": "runtime.native.system.io.compression/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.0/_._",
@@ -7700,7 +7691,7 @@
       ]
     },
     "runtime.opensuse.13.2-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "b3pthNgxxFcD+Pc0WSEoC0+md3MyhRS6aCEeenvNE3Fdw1HyJ18ZhRFVJJzIeR/O/jpxPboB805Ho0T3Ul7w8A==",
+      "sha512": "zWLOQ77Y4FV/6Vw2g+FYzprbQX5/xKvjoCLe4L9159Aw1bSboQoJ1KRZFNdexDooWRAIsLSdE0ZokkrVkwN8Yw==",
       "type": "package",
       "path": "runtime.opensuse.13.2-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
@@ -7752,7 +7743,7 @@
       ]
     },
     "runtime.rhel.7-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "nyFNiCk/r+VOiIqreLix8yN+q3Wga9+SE8BCgkf+2BwEKiNx6DyvFjCgkfV743/grxv8jHJ8gUK4XEQw7yzRYg==",
+      "sha512": "T5NvFgmHX0WH4c7lP72krsnk+IJI10vJf2j2twGE+5QBRA4RyRAgD+ZjEgdmpLOjW4B+nZGaadewTCUcR899OQ==",
       "type": "package",
       "path": "runtime.rhel.7-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
@@ -7778,7 +7769,7 @@
       ]
     },
     "runtime.ubuntu.16.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "I8bKw2I8k58Wx7fMKQJn2R8lamboCAiHfHeV/pS65ScKWMMI0+wJkLYlEKvgW1D/XvSl/221clBoR2q9QNNM7A==",
+      "sha512": "YWzJvhiC+iLWI/IfpPQUIBhYnAHUFQFRDqR7VDNmPj0b3rjW7dArFqKysZ9v0iSBs9Ih4v9GasLpYCSUwADMQQ==",
       "type": "package",
       "path": "runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
@@ -7791,7 +7782,7 @@
       ]
     },
     "runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "VB5cn/7OzUfzdnC8tqAIMQciVLiq2epm2NrAm1E9OjNRyG4lVhfR61SMcLizejzQP8R8Uf/0l5qOIbUEi+RdEg==",
+      "sha512": "1uVTITQP8/cI6YoO6FqfW1pzP0k2TnDZ3TFD88Bu/9H7ZuTsMY9xmadbGpwPu8w8swcd1ifZJsjD9hF9O6C/tg==",
       "type": "package",
       "path": "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
@@ -8145,7 +8136,6 @@
       "path": "system.collections.nongeneric/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -8179,7 +8169,7 @@
       ]
     },
     "System.Collections.Specialized/4.3.0": {
-      "sha512": "NoPBj0ykejqAWW4p4gGtrrL+3c84ZLSvGnHgq422ew1Rj4WKj1FA8/BCybqC111EtgcqUl6ZJNFYYS22HLgbjA==",
+      "sha512": "Epx8PoVZR0iuOnJJDzp7pWvdfMMOAvpUo95pC4ScH2mJuXkKA2Y4aR3cG9qt2klHgSons1WFh4kcGW7cSXvrxg==",
       "type": "package",
       "path": "system.collections.specialized/4.3.0",
       "files": [
@@ -8422,7 +8412,6 @@
       "path": "system.diagnostics.contracts/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -8574,7 +8563,6 @@
       "path": "system.diagnostics.fileversioninfo/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -9839,7 +9827,6 @@
       "path": "system.private.datacontractserialization/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.3/System.Private.DataContractSerialization.dll",
@@ -9935,7 +9922,6 @@
       "path": "system.reflection.emit/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -9971,7 +9957,6 @@
       "path": "system.reflection.emit.ilgeneration/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -10718,7 +10703,6 @@
       "path": "system.runtime.serialization.primitives/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -10791,7 +10775,6 @@
       "path": "system.runtime.serialization.xml/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -10905,6 +10888,7 @@
       "path": "system.security.claims/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -11046,7 +11030,6 @@
       "path": "system.security.cryptography.csp/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -11113,12 +11096,11 @@
       ]
     },
     "System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "h4CEgOgv5PKVF/HwaHzJRiVboL2THYCou97zpmhjghx5frc7fIvlkY1jL+lnIQyChrJDMNEXS6r7byGif8Cy4w==",
+      "sha512": "vOYy7Jv9KsG3ld2hLt0GoERd82SZi4BelrbXLwI9yFBYX7kpbvUCWYo4eyevk47cuJXZ9ZLVAryANcc7iY71aA==",
       "type": "package",
       "path": "system.security.cryptography.openssl/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.6/System.Security.Cryptography.OpenSsl.dll",
@@ -11875,7 +11857,6 @@
       "path": "system.threading.tasks.parallel/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -11932,7 +11913,6 @@
       "path": "system.threading.thread/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -12128,7 +12108,6 @@
       "path": "system.xml.xmldocument/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -12162,7 +12141,7 @@
       ]
     },
     "System.Xml.XmlSerializer/4.3.0": {
-      "sha512": "MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
+      "sha512": "VShQJhOxgD/5M2Z1IWm1vMaSqlbjo1zdFf8H7Ahte6bTvSUhUko/gDpAVVhGgGgTDeue4QyNg1fu1Zz2GKSEuQ==",
       "type": "package",
       "path": "system.xml.xmlserializer/4.3.0",
       "files": [
@@ -12237,7 +12216,6 @@
       "path": "system.xml.xpath/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -12308,84 +12286,83 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
+    "BaseCore.InterFace/1.0.0": {
+      "type": "project",
+      "path": "../BaseCore.InterFace/BaseCore.InterFace.csproj",
+      "msbuildProject": "../BaseCore.InterFace/BaseCore.InterFace.csproj"
+    },
     "NetCore.Common/1.0.0": {
       "type": "project",
       "path": "../NetCore.Common/NetCore.Common.csproj",
       "msbuildProject": "../NetCore.Common/NetCore.Common.csproj"
-    },
-    "NetCore.IRepository/1.0.0": {
-      "type": "project",
-      "path": "../NetCore.IRepository/NetCore.IRepository.csproj",
-      "msbuildProject": "../NetCore.IRepository/NetCore.IRepository.csproj"
-    },
-    "NetCore.IServices/1.0.0": {
-      "type": "project",
-      "path": "../NetCore.IServices/NetCore.IServices.csproj",
-      "msbuildProject": "../NetCore.IServices/NetCore.IServices.csproj"
     },
     "NetCore.Model/1.0.0": {
       "type": "project",
       "path": "../NetCore.Model/NetCore.Model.csproj",
       "msbuildProject": "../NetCore.Model/NetCore.Model.csproj"
     },
-    "NetCore.Repository/1.0.0": {
+    "NetCore.Services/1.0.0": {
       "type": "project",
-      "path": "../NetCore.Repository/NetCore.Repository.csproj",
-      "msbuildProject": "../NetCore.Repository/NetCore.Repository.csproj"
+      "path": "../NetCore.Services/NetCore.Services.csproj",
+      "msbuildProject": "../NetCore.Services/NetCore.Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
+      "BaseCore.InterFace >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0",
       "NetCore.Common >= 1.0.0",
-      "NetCore.IServices >= 1.0.0",
       "NetCore.Model >= 1.0.0",
-      "NetCore.Repository >= 1.0.0",
+      "NetCore.Services >= 1.0.0",
       "Swashbuckle.AspNetCore >= 4.0.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ASUS\\.nuget\\packages\\": {},
+    "C:\\Users\\Ye\\.nuget\\packages\\": {},
+    "F:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\SourceCodeHouse\\NetCoreBasicsFrame\\NetCoreBasicsFrame\\NetCore.BasicsFrame.csproj",
+      "projectUniqueName": "E:\\MyCode\\CoreBasicsFrame\\NetCoreBasicsFrame\\NetCoreBasicsFrame\\NetCore.BasicsFrame.csproj",
       "projectName": "NetCore.BasicsFrame",
-      "projectPath": "D:\\SourceCodeHouse\\NetCoreBasicsFrame\\NetCoreBasicsFrame\\NetCore.BasicsFrame.csproj",
-      "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "D:\\SourceCodeHouse\\NetCoreBasicsFrame\\NetCoreBasicsFrame\\obj\\",
+      "projectPath": "E:\\MyCode\\CoreBasicsFrame\\NetCoreBasicsFrame\\NetCoreBasicsFrame\\NetCore.BasicsFrame.csproj",
+      "packagesPath": "C:\\Users\\Ye\\.nuget\\packages\\",
+      "outputPath": "E:\\MyCode\\CoreBasicsFrame\\NetCoreBasicsFrame\\NetCoreBasicsFrame\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "F:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Ye\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "D:\\SourceCodeHouse\\NetCoreBasicsFrame\\NetCore.Common\\NetCore.Common.csproj": {
-              "projectPath": "D:\\SourceCodeHouse\\NetCoreBasicsFrame\\NetCore.Common\\NetCore.Common.csproj"
+            "E:\\MyCode\\CoreBasicsFrame\\NetCoreBasicsFrame\\BaseCore.InterFace\\BaseCore.InterFace.csproj": {
+              "projectPath": "E:\\MyCode\\CoreBasicsFrame\\NetCoreBasicsFrame\\BaseCore.InterFace\\BaseCore.InterFace.csproj"
             },
-            "D:\\SourceCodeHouse\\NetCoreBasicsFrame\\NetCore.IServices\\NetCore.IServices.csproj": {
-              "projectPath": "D:\\SourceCodeHouse\\NetCoreBasicsFrame\\NetCore.IServices\\NetCore.IServices.csproj"
+            "E:\\MyCode\\CoreBasicsFrame\\NetCoreBasicsFrame\\NetCore.Common\\NetCore.Common.csproj": {
+              "projectPath": "E:\\MyCode\\CoreBasicsFrame\\NetCoreBasicsFrame\\NetCore.Common\\NetCore.Common.csproj"
             },
-            "D:\\SourceCodeHouse\\NetCoreBasicsFrame\\NetCore.Model\\NetCore.Model.csproj": {
-              "projectPath": "D:\\SourceCodeHouse\\NetCoreBasicsFrame\\NetCore.Model\\NetCore.Model.csproj"
+            "E:\\MyCode\\CoreBasicsFrame\\NetCoreBasicsFrame\\NetCore.Model\\NetCore.Model.csproj": {
+              "projectPath": "E:\\MyCode\\CoreBasicsFrame\\NetCoreBasicsFrame\\NetCore.Model\\NetCore.Model.csproj"
             },
-            "D:\\SourceCodeHouse\\NetCoreBasicsFrame\\NetCore.Repository\\NetCore.Repository.csproj": {
-              "projectPath": "D:\\SourceCodeHouse\\NetCoreBasicsFrame\\NetCore.Repository\\NetCore.Repository.csproj"
+            "E:\\MyCode\\CoreBasicsFrame\\NetCoreBasicsFrame\\NetCore.Services\\NetCore.Services.csproj": {
+              "projectPath": "E:\\MyCode\\CoreBasicsFrame\\NetCoreBasicsFrame\\NetCore.Services\\NetCore.Services.csproj"
             }
           }
         }

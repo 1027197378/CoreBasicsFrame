@@ -62,7 +62,7 @@ namespace NetCore.Model.Models
         /// <summary>
         /// 创建人
         /// </summary>
-        [Column(TypeName = "NvarChar(36)")]
+        [Column(TypeName = "uniqueidentifier")]
         public Guid? CreatUser { get; set; }
 
         /// <summary>

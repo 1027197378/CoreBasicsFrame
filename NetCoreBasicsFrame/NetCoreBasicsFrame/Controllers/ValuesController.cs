@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BaseCore.InterFace;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NetCore.Model;
 using NetCore.Model.Models;
-using NetCore.Repository.BaseRepository;
 using NetCoreBasicsFrame.AuthHelper.OverWrite;
 
 namespace NetCoreBasicsFrame.Controllers
@@ -18,7 +18,13 @@ namespace NetCoreBasicsFrame.Controllers
     [ApiController]
     public class ValuesController : Controller
     {
-        NetCoreBaseDBContext mycontex;
+        ISYSUser _isysUser;
+
+        public ValuesController(ISYSUser isysUser)
+        {
+            this._isysUser = isysUser;
+        }
+
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
@@ -34,16 +40,18 @@ namespace NetCoreBasicsFrame.Controllers
         /// <returns></returns>
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult Get(string id)
+        public ActionResult Get(string id, string name)
         {
-            //BaseRepository<SYSUser> my = new BaseRepository<SYSUser>();
-            SYSUser myUser = new SYSUser();
             Guid myid = new Guid(id);
-            myUser = mycontex.Set<SYSUser>().Where(u => u.UserID == myid).FirstOrDefault();
+            SYSUser user = _isysUser.QueryById(myid);
+           IEnumerable<SYSUser> newUser = _isysUser.LinqQuery(name);
+            var data = new
+            {
+                lambda = user,
+                linq = newUser
+            };
 
-            //Task<SYSUser> myUser = my.QueryById(id);
-            return Json(myUser);
-            //6F9619FF-8B86-D011-B42D-00C04FC964FF
+            return Json(data);
         }
 
         [HttpPost]
