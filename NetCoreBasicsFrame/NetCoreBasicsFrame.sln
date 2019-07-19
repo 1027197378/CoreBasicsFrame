@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCore.Common", "NetCore.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCore.Services", "NetCore.Services\NetCore.Services.csproj", "{F81C90AA-30D6-4B47-9C83-F5D9CAD8C722}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseCore.InterFace", "BaseCore.InterFace\BaseCore.InterFace.csproj", "{13931786-D741-46D1-831F-015A52081987}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaseCore.InterFace", "BaseCore.InterFace\BaseCore.InterFace.csproj", "{13931786-D741-46D1-831F-015A52081987}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
