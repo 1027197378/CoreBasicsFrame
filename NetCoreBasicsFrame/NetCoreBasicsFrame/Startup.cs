@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BaseCore.InterFace;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -17,8 +16,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using NetCore.Interfaces;
+using NetCore.Interfaces.BaseInterface;
 using NetCore.Model;
+using NetCore.Model.Models;
 using NetCore.Services;
+using NetCore.Services.BaseService;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace NetCoreBasicsFrame

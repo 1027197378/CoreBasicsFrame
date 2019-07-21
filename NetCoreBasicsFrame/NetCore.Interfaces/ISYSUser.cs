@@ -1,13 +1,13 @@
 ﻿using NetCore.Model.Models;
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace BaseCore.InterFace
+namespace NetCore.Interfaces
 {
     public interface ISYSUser
     {
-        SYSUser QueryById(Guid id);
+        Task<SYSUser> QueryById(object id);
 
         IEnumerable<SYSUser> LinqQuery(string Name);
     }

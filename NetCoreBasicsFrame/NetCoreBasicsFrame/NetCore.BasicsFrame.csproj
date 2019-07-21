@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>E:\MyCode\CoreBasicsFrame\NetCoreBasicsFrame\NetCoreBasicsFrame\obj\Debug\netcoreapp2.2\NetCoreBasicsFrame\NetCoreBasicsFrame.xml</DocumentationFile>
+    <DocumentationFile>D:\SourceCodeHouse\NetCoreBasicsFrame\NetCoreBasicsFrame\obj\Debug\netcoreapp2.2\NetCoreBasicsFrame.xml</DocumentationFile>
     <NoWarn>1701;1702 ;1591</NoWarn>
   </PropertyGroup>
 
@@ -18,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BaseCore.InterFace\BaseCore.InterFace.csproj" />
     <ProjectReference Include="..\NetCore.Common\NetCore.Common.csproj" />
+    <ProjectReference Include="..\NetCore.Interfaces\NetCore.Interfaces.csproj" />
     <ProjectReference Include="..\NetCore.Model\NetCore.Model.csproj" />
     <ProjectReference Include="..\NetCore.Services\NetCore.Services.csproj" />
   </ItemGroup>

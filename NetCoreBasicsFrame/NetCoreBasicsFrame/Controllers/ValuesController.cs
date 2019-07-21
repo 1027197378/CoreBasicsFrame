@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BaseCore.InterFace;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using NetCore.Interfaces;
 using NetCore.Model;
 using NetCore.Model.Models;
 using NetCoreBasicsFrame.AuthHelper.OverWrite;
@@ -18,7 +18,7 @@ namespace NetCoreBasicsFrame.Controllers
     [ApiController]
     public class ValuesController : Controller
     {
-        ISYSUser _isysUser;
+        private readonly ISYSUser _isysUser;
 
         public ValuesController(ISYSUser isysUser)
         {
@@ -36,22 +36,24 @@ namespace NetCoreBasicsFrame.Controllers
         /// Get方法获取ID
         /// </summary>
         /// <param name="id">ID</param>
-        /// <param name="token">token</param>
+        /// <param name="name">token</param>
         /// <returns></returns>
         // GET api/values/5
         [HttpGet("{id}")]
         public ActionResult Get(string id, string name)
         {
-            Guid myid = new Guid(id);
-            SYSUser user = _isysUser.QueryById(myid);
-           IEnumerable<SYSUser> newUser = _isysUser.LinqQuery(name);
+            Task<SYSUser> user = _isysUser.QueryById(new Guid(id));
+            IEnumerable<SYSUser> newUser = _isysUser.LinqQuery(name);
             var data = new
             {
-                lambda = user,
+                lambda = user.Result,
                 linq = newUser
             };
-
-            return Json(data);
+            MessageModel<object> resule = new MessageModel<object>();
+            resule.success = true;
+            resule.msg = "Ok";
+            resule.data = data;
+            return Json(resule);
         }
 
         [HttpPost]
