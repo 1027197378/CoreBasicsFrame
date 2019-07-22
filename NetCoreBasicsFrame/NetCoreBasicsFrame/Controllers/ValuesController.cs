@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -39,15 +40,35 @@ namespace NetCoreBasicsFrame.Controllers
         /// <param name="name">token</param>
         /// <returns></returns>
         // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult Get(string id, string name)
+        [HttpPost]
+        public ActionResult Get(string Ids, string id, string name)
         {
+            object[] param = id.Split(',');
+
+
+            Task<List<SYSUser>> data1 = _isysUser.QueryForSql("SELECT * FROM SYSUser");
+
+            Task<List<SYSUser>> data2 = _isysUser.QueryForSql("SELECT * FROM SYSUser WHere UserID ={0}",param);
+
+
+            Expression<Func<SYSUser, bool>> where = null;
+            Expression<Func<SYSUser, object>> order = null;
+            //where = a => a.Name.Contains(name);
+            order = a => a.CreatTime;
+            Task<List<SYSUser>> wheredata = _isysUser.QueryStrAsync(where);
+
+            Task<List<SYSUser>> orderwheredata = _isysUser.QueryStrAsync(where, order, false);
+
             Task<SYSUser> user = _isysUser.QueryById(new Guid(id));
             IEnumerable<SYSUser> newUser = _isysUser.LinqQuery(name);
             var data = new
             {
                 lambda = user.Result,
-                linq = newUser
+                linq = newUser,
+                where = wheredata.Result,
+                orderwhere = orderwheredata.Result,
+                data1 = data1.Result,
+                data2 = data2.Result
             };
             MessageModel<object> resule = new MessageModel<object>();
             resule.success = true;
