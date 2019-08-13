@@ -34,7 +34,8 @@ namespace NetCore.Services
 
         public async Task<List<SYSUser>> QueryStrAsync(Expression<Func<SYSUser, bool>> where)
         {
-            return await base.QueryStrAsync(where);
+            Expression<Func<SYSUser, bool>> where1 = a => true;
+            return await base.QueryStrAsync(where1);
         }
 
         public async Task<List<SYSUser>> QueryStrAsync(Expression<Func<SYSUser, bool>> where, Expression<Func<SYSUser, object>> orderBy, bool isASC = true)
@@ -50,6 +51,11 @@ namespace NetCore.Services
         public async Task<List<SYSUser>> QueryForSql(string sqlStr, params object[] param)
         {
             return await base.QueryForSql(sqlStr, param);
+        }
+
+        public List<SYSUser> pageList(Expression<Func<SYSUser, bool>> where, int pageindx, int pagesize, out int total)
+        {
+            return base.QueryPageList(where, pageindx, pagesize, out total);
         }
     }
 }

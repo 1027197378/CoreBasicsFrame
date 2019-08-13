@@ -20,33 +20,42 @@ namespace NetCore.Interfaces.BaseInterface
         /// <summary>
         /// Where条件查询
         /// </summary>
-        /// <param name="where">查询条件</param>
+        /// <param name="Where">查询条件</param>
         /// <returns></returns>
-        Task<List<TEntity>> QueryStrAsync(Expression<Func<TEntity, bool>> where);
+        Task<List<TEntity>> QueryStrAsync(Expression<Func<TEntity, bool>> Where);
 
         /// <summary>
         /// Where条件查询排序
         /// </summary>
-        /// <param name="where">查询条件</param>
-        /// <param name="orderBy">排序字段</param>
-        /// <param name="isAsc">ASC or DESC</param>
+        /// <param name="Where">查询条件</param>
+        /// <param name="OrderBy">排序字段</param>
+        /// <param name="IsAsc">ASC or DESC</param>
         /// <returns></returns>
-        Task<List<TEntity>> QueryStrAsync(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, object>> orderBy, bool isAsc = true);
+        Task<List<TEntity>> QueryStrAsync(Expression<Func<TEntity, bool>> Where, Expression<Func<TEntity, object>> OrderBy, bool IsAsc = true);
 
         /// <summary>
         /// Sql查询
         /// </summary>
-        /// <param name="sqlStr">Sql语句</param>
+        /// <param name="SqlStr">Sql语句</param>
         /// <returns></returns>
-        Task<List<TEntity>> QueryForSql(string sqlStr);
+        Task<List<TEntity>> QueryForSql(string SqlStr);
 
         /// <summary>
         /// Sql参数查询
         /// </summary>
-        /// <param name="sqlStr">Sql语句</param>
-        /// <param name="param">参数</param>
+        /// <param name="SqlStr">Sql语句</param>
+        /// <param name="Params">参数</param>
         /// <returns></returns>
-        Task<List<TEntity>> QueryForSql(string sqlStr, params object[] param);
+        Task<List<TEntity>> QueryForSql(string SqlStr, params object[] Params);
 
+        /// <summary>
+        /// 分页查询
+        /// </summary>
+        /// <param name="Where"></param>
+        /// <param name="PageIndex"></param>
+        /// <param name="PageSize"></param>
+        /// <param name="Total"></param>
+        /// <returns></returns>
+        List<TEntity> QueryPageList(Expression<Func<TEntity,bool>> Where,int PageIndex,int PageSize,out int Total );
     }
 }

@@ -38,5 +38,7 @@ namespace NetCore.Interfaces
         /// <param name="param">参数</param>
         /// <returns></returns>
         Task<List<SYSUser>> QueryForSql(string sqlStr, params object[] param);
+
+        List<SYSUser> pageList(Expression<Func<SYSUser, bool>> where, int pageindx, int pagesize, out int total);
     }
 }

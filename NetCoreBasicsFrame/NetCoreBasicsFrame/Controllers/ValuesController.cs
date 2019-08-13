@@ -41,34 +41,23 @@ namespace NetCoreBasicsFrame.Controllers
         /// <returns></returns>
         // GET api/values/5
         [HttpPost]
-        public ActionResult Get(string Ids, string id, string name)
+        public ActionResult Get(int? age, int pageIndex, int pageSize)
         {
-            object[] param = id.Split(',');
+
+            Expression<Func<SYSUser, bool>> where = a => true;
+
+            int total = 0;
+            if (age != null)
+            {
+                where = a => a.Age == age;
+            }
+
+            List<SYSUser> user = _isysUser.pageList(where, pageIndex, pageSize, out total);
 
 
-            Task<List<SYSUser>> data1 = _isysUser.QueryForSql("SELECT * FROM SYSUser");
-
-            Task<List<SYSUser>> data2 = _isysUser.QueryForSql("SELECT * FROM SYSUser WHere UserID ={0}",param);
-
-
-            Expression<Func<SYSUser, bool>> where = null;
-            Expression<Func<SYSUser, object>> order = null;
-            //where = a => a.Name.Contains(name);
-            order = a => a.CreatTime;
-            Task<List<SYSUser>> wheredata = _isysUser.QueryStrAsync(where);
-
-            Task<List<SYSUser>> orderwheredata = _isysUser.QueryStrAsync(where, order, false);
-
-            Task<SYSUser> user = _isysUser.QueryById(new Guid(id));
-            IEnumerable<SYSUser> newUser = _isysUser.LinqQuery(name);
             var data = new
             {
-                lambda = user.Result,
-                linq = newUser,
-                where = wheredata.Result,
-                orderwhere = orderwheredata.Result,
-                data1 = data1.Result,
-                data2 = data2.Result
+                lambda = user,
             };
             MessageModel<object> resule = new MessageModel<object>();
             resule.success = true;

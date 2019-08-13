@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NetCore.Common.Helper
+namespace NetCore.Common
 {
     public static class UtilConvert
     {

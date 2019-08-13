@@ -34,49 +34,64 @@ namespace NetCore.Services.BaseService
         /// <summary>
         /// Where条件查询
         /// </summary>
-        /// <param name="where"></param>
+        /// <param name="Where"></param>
         /// <returns></returns>
-        public async Task<List<TEntity>> QueryStrAsync(Expression<Func<TEntity, bool>> where)
+        public async Task<List<TEntity>> QueryStrAsync(Expression<Func<TEntity, bool>> Where)
         {
-            return where == null ? await _dbSet.ToListAsync() : await _dbSet.Where(where).ToListAsync(); ;
+            return await _dbSet.Where(Where).ToListAsync(); ;
         }
 
         /// <summary>
         /// Where条件查询排序
         /// </summary>
-        /// <param name="where">查询条件</param>
-        /// <param name="orderBy">排序字段不能为Null</param>
-        /// <param name="isAsc">ASC or DESC</param>
+        /// <param name="Where">查询条件</param>
+        /// <param name="OrderBy">排序字段不能为Null</param>
+        /// <param name="IsAsc">ASC or DESC</param>
         /// <returns></returns>
-        public async Task<List<TEntity>> QueryStrAsync(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, object>> orderBy, bool isAsc = true)
+        public async Task<List<TEntity>> QueryStrAsync(Expression<Func<TEntity, bool>> Where, Expression<Func<TEntity, object>> OrderBy, bool IsAsc = true)
         {
-            if (isAsc)
+            if (IsAsc)
             {
-                return where == null ? await _dbSet.OrderBy(orderBy).ToListAsync() : await _dbSet.Where(where).OrderBy(orderBy).ToListAsync();
+                return await _dbSet.Where(Where).OrderBy(OrderBy).ToListAsync();
             }
-            return where == null ? await _dbSet.OrderByDescending(orderBy).ToListAsync() : await _dbSet.Where(where).OrderByDescending(orderBy).ToListAsync();
+            return await _dbSet.Where(Where).OrderByDescending(OrderBy).ToListAsync();
         }
 
         /// <summary>
         /// Sql查询
         /// </summary>
-        /// <param name="sqlStr">Sql语句</param>
+        /// <param name="SqlStr">Sql语句</param>
         /// <returns></returns>
-        public async Task<List<TEntity>> QueryForSql(string sqlStr)
+        public async Task<List<TEntity>> QueryForSql(string SqlStr)
         {
-            return await _dbSet.FromSql(sqlStr).ToListAsync();
+            return await _dbSet.FromSql(SqlStr).ToListAsync();
         }
 
         /// <summary>
         /// Sql查询
         /// </summary>
-        /// <param name="sqlStr">Sql语句</param>
-        /// <param name="param">参数</param>
+        /// <param name="SqlStr">Sql语句</param>
+        /// <param name="Params">参数</param>
         /// <returns></returns>
-       public async Task<List<TEntity>> QueryForSql(string sqlStr, params object[] param)
+        public async Task<List<TEntity>> QueryForSql(string SqlStr, params object[] Params)
         {
-            return await _dbSet.FromSql(sqlStr,param).ToListAsync();
+            return await _dbSet.FromSql(SqlStr, Params).ToListAsync();
         }
 
+        /// <summary>
+        /// 分页查询
+        /// </summary>
+        /// <param name="Where"></param>
+        /// <param name="PageIndex"></param>
+        /// <param name="PageSize"></param>
+        /// <param name="Total"></param>
+        /// <returns></returns>
+        public List<TEntity> QueryPageList(Expression<Func<TEntity, bool>> Where, int PageIndex, int PageSize, out int Total)
+        {
+            List<TEntity> entity = new List<TEntity>();
+            entity = _dbSet.Where(Where).ToList();
+            Total = entity.Count;
+            return entity.Skip(PageSize * (PageIndex - 1)).Take(PageSize).ToList();
+        }
     }
 }
