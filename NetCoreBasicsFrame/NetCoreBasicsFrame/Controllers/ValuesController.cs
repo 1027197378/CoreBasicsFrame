@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Autofac.Extras.DynamicProxy;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using NetCore.BasicsFrame;
 using NetCore.Interfaces;
 using NetCore.Model;
 using NetCore.Model.Models;
@@ -44,6 +46,8 @@ namespace NetCoreBasicsFrame.Controllers
         public ActionResult Get(int? age, int pageIndex, int pageSize)
         {
 
+            string ba=  _isysUser.getAop();
+
             Expression<Func<SYSUser, bool>> where = a => true;
 
             int total = 0;
@@ -52,12 +56,12 @@ namespace NetCoreBasicsFrame.Controllers
                 where = a => a.Age == age;
             }
 
-            List<SYSUser> user = _isysUser.pageList(where, pageIndex, pageSize, out total);
+           Task<List<SYSUser>> user = _isysUser.QueryStrAsync(where);
 
 
             var data = new
             {
-                lambda = user,
+                lambda = user.Result,
             };
             MessageModel<object> resule = new MessageModel<object>();
             resule.success = true;

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Autofac;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -13,16 +14,15 @@ using Microsoft.DotNet.PlatformAbstractions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using NetCore.Interfaces;
-using NetCore.Interfaces.BaseInterface;
 using NetCore.Model;
-using NetCore.Model.Models;
-using NetCore.Services;
-using NetCore.Services.BaseService;
 using Swashbuckle.AspNetCore.Swagger;
+using Autofac.Extensions.DependencyInjection;
+using Autofac.Extras.DynamicProxy;
+using NetCore.BasicsFrame;
+using System.Reflection;
+using NetCore.Services;
 
 namespace NetCoreBasicsFrame
 {
@@ -35,7 +35,7 @@ namespace NetCoreBasicsFrame
 
         public IConfiguration Configuration { get; }
 
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
@@ -120,6 +120,29 @@ namespace NetCoreBasicsFrame
             services.AddScoped<ISYSUser, SYSUserService>();
 
             services.AddDbContext<NetCoreBaseDBContext>(Options => Options.UseSqlServer(Configuration.GetConnectionString("SqlServer"), b => b.MigrationsAssembly("NetCore.BasicsFrame")));
+
+            #region 依赖注入(AutoFac)
+            var builder = new ContainerBuilder();
+
+            builder.RegisterType<SYSUserService>().As<ISYSUser>();
+
+            builder.RegisterType<LogAop>();//可以直接替换其他拦截器！一定要把拦截器进行注册
+
+            builder.RegisterAssemblyTypes(Assembly.Load("NetCore.Services"))
+                      .AsImplementedInterfaces()
+                      .InstancePerLifetimeScope()
+                      .EnableInterfaceInterceptors()//引用Autofac.Extras.DynamicProxy;
+                      .InterceptedBy(typeof(LogAop));//可以直接替换拦截器
+
+            //将services填充到Autofac容器生成器中
+            builder.Populate(services);
+
+            //使用已进行的组件登记创建新容器
+            var ApplicationContainer = builder.Build();
+
+            return new AutofacServiceProvider(ApplicationContainer);//第三方IOC接管 core内置DI容器
+            #endregion
+
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -145,5 +168,7 @@ namespace NetCoreBasicsFrame
 
             app.UseMvc();
         }
+
+
     }
 }

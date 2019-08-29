@@ -78,7 +78,7 @@ namespace NetCoreBasicsFrame.AuthHelper.OverWrite
             }
             var model = new TokenModelJwt
             {
-                Uid = (jwtToken.Id).ObjToInt(),
+                Uid = Convert.ToInt32(jwtToken.Id),
                 Role = Role != null ? Role.ToString() : ""
             };
             return model;

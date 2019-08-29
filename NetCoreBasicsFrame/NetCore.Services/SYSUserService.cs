@@ -53,9 +53,14 @@ namespace NetCore.Services
             return await base.QueryForSql(sqlStr, param);
         }
 
-        public List<SYSUser> pageList(Expression<Func<SYSUser, bool>> where, int pageindx, int pagesize, out int total)
+        public List<SYSUser> PageList(Expression<Func<SYSUser, bool>> where, int pageindx, int pagesize, out int total)
         {
             return base.QueryPageList(where, pageindx, pagesize, out total);
+        }
+
+        public string getAop() {
+
+            return "AOP";
         }
     }
 }
