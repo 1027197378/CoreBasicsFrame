@@ -1,35 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
+using System.Threading;
 using Castle.DynamicProxy;
+using NetCore.Common;
+
 namespace NetCore.BasicsFrame
 {
     public class LogAop : IInterceptor
     {
         public void Intercept(IInvocation invocation)
         {
-            string logStr = $"{DateTime.Now.ToString("yyyyMMddHHmmss")} \r\n" +
-                $"[执行的方法]:{invocation.Method.Name} \r\n" + $"[参数]:{invocation.Arguments.Select(a => a ?? "").ToString().ToArray()}";
-            Console.WriteLine("啊实打实的");
-            //拦截器执行完成后继续执行该方法
-            invocation.Proceed();
-            Console.WriteLine("阿萨大");
-            logStr += $"[方法执行完毕返回的结果]:{invocation.ReturnValue}";
+            StringBuilder str = new StringBuilder();
+            int State = 0;
 
-            //输出到Log文件中
-            string path = Directory.GetCurrentDirectory() + @"\Log";
+            str.Append($"【执行时间】:{DateTime.Now.ToString()} \r\n" + $"【执行的方法】:{invocation.TargetType.Name + "/" + invocation.Method.Name} \r\n"
+                + $"【参数】:{string.Join(",", invocation.Arguments)} \r\n");
 
-            if (!Directory.Exists(path))
+            try
             {
-                Directory.CreateDirectory(path);
+                invocation.Proceed();  //拦截器执行完成后继续执行该方法
             }
-            string fileName = path + $@"\SystemLog-{DateTime.Now.ToString("yyyyMMdd")}.log";
+            catch (Exception e)
+            {
+                State = 1;
+                str.Append($"[方法执行中出现异常]:{e.Message + e.InnerException} \r\n");
+            }
+            str.Append($"【返回结果】:{invocation.ReturnValue} \r\n");
 
-            StreamWriter sw = File.AppendText(fileName);
-            sw.WriteLine(logStr);
-            sw.Close();
+            new LogHelper().ActionInfo(str.ToString(), State);
         }
     }
 }

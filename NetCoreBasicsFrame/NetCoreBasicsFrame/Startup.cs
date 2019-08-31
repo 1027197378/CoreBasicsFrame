@@ -117,30 +117,12 @@ namespace NetCoreBasicsFrame
              });
             #endregion
 
-            services.AddScoped<ISYSUser, SYSUserService>();
-
             services.AddDbContext<NetCoreBaseDBContext>(Options => Options.UseSqlServer(Configuration.GetConnectionString("SqlServer"), b => b.MigrationsAssembly("NetCore.BasicsFrame")));
 
+            services.AddCors();
+
             #region 依赖注入(AutoFac)
-            var builder = new ContainerBuilder();
-
-            builder.RegisterType<SYSUserService>().As<ISYSUser>();
-
-            builder.RegisterType<LogAop>();//可以直接替换其他拦截器！一定要把拦截器进行注册
-
-            builder.RegisterAssemblyTypes(Assembly.Load("NetCore.Services"))
-                      .AsImplementedInterfaces()
-                      .InstancePerLifetimeScope()
-                      .EnableInterfaceInterceptors()//引用Autofac.Extras.DynamicProxy;
-                      .InterceptedBy(typeof(LogAop));//可以直接替换拦截器
-
-            //将services填充到Autofac容器生成器中
-            builder.Populate(services);
-
-            //使用已进行的组件登记创建新容器
-            var ApplicationContainer = builder.Build();
-
-            return new AutofacServiceProvider(ApplicationContainer);//第三方IOC接管 core内置DI容器
+            return AutofacConfig(services);
             #endregion
 
         }
@@ -163,12 +145,40 @@ namespace NetCoreBasicsFrame
             });
             #endregion
 
+            //配置Cors跨域
+            app.UseCors(o => o.WithOrigins("127.0.0.1:8001").AllowAnyHeader().AllowAnyMethod());
+
+            //返回错误码
+            app.UseStatusCodePages();
+
             //开启权限认证
             app.UseAuthentication();
 
             app.UseMvc();
         }
 
+        public IServiceProvider AutofacConfig(IServiceCollection services)
+        {
+            var builder = new ContainerBuilder();
+
+            //builder.RegisterType<SYSUserService>().As<ISYSUser>();//以下RegisterAssemblyTypes
+
+            builder.RegisterType<LogAop>();//可以直接替换其他拦截器！一定要把拦截器进行注册
+
+            builder.RegisterAssemblyTypes(Assembly.Load("NetCore.Services"))
+                      .AsImplementedInterfaces()
+                      .InstancePerLifetimeScope()
+                      .EnableInterfaceInterceptors()//引用Autofac.Extras.DynamicProxy;
+                      .InterceptedBy(typeof(LogAop));//可以直接替换拦截器
+
+            //将services填充到Autofac容器生成器中
+            builder.Populate(services);
+
+            //使用已进行的组件登记创建新容器
+            var ApplicationContainer = builder.Build();
+
+            return new AutofacServiceProvider(ApplicationContainer);//第三方IOC接管 core内置DI容器
+        }
 
     }
 }

@@ -54,6 +54,6 @@ namespace NetCore.Interfaces
         /// <returns></returns>
         List<SYSUser> PageList(Expression<Func<SYSUser, bool>> where, int pageindx, int pagesize, out int total);
 
-        string getAop();
+        string getAop(int i);
     }
 }

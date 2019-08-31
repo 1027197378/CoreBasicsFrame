@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Autofac.Extras.DynamicProxy;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using NetCore.BasicsFrame;
+using NetCore.Common;
 using NetCore.Interfaces;
 using NetCore.Model;
 using NetCore.Model.Models;
@@ -43,25 +43,30 @@ namespace NetCoreBasicsFrame.Controllers
         /// <returns></returns>
         // GET api/values/5
         [HttpPost]
-        public ActionResult Get(int? age, int pageIndex, int pageSize)
+        public ActionResult Get(int age, int pageIndex, int pageSize)
         {
-
-            string ba=  _isysUser.getAop();
+            RedisCache _redisCache = new RedisCache();
+            List<SYSUser> user = new List<SYSUser>();
+            string ba = _isysUser.getAop(1);
 
             Expression<Func<SYSUser, bool>> where = a => true;
 
-            int total = 0;
-            if (age != null)
+            where = where.And(b => b.Age == age);
+            where = where.And(c => c.LoginPwd == "10");
+            if (_redisCache.Exist("data" + age))
             {
-                where = a => a.Age == age;
+                user = _redisCache.Get<List<SYSUser>>("data" + age);
             }
-
-           Task<List<SYSUser>> user = _isysUser.QueryStrAsync(where);
-
+            else
+            {
+                user = _isysUser.QueryStrAsync(where).Result;
+                _redisCache.Set("data" + age, user, TimeSpan.FromSeconds(30));
+            }
+            _redisCache.Set("data1", user);
 
             var data = new
             {
-                lambda = user.Result,
+                lambda = user,
             };
             MessageModel<object> resule = new MessageModel<object>();
             resule.success = true;
