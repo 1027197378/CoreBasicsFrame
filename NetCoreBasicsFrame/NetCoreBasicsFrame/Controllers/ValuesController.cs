@@ -17,63 +17,59 @@ namespace NetCoreBasicsFrame.Controllers
     /// <summary>
     /// Vule控制器
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class ValuesController : Controller
     {
-        private readonly ISYSUser _isysUser;
+        private readonly ISYSUser _IsysUser;
+        private readonly IRedisCache _IredisCache;
 
-        public ValuesController(ISYSUser isysUser)
+        public ValuesController(ISYSUser isysUser, IRedisCache redisCache)
         {
-            this._isysUser = isysUser;
-        }
-
-        // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
-        {
-            return new string[] { "value1", "value2" };
+            this._IsysUser = isysUser;
+            _IredisCache = redisCache;
         }
 
         /// <summary>
         /// Get方法获取ID
         /// </summary>
-        /// <param name="id">ID</param>
-        /// <param name="name">token</param>
+        /// <param name="Name">姓名</param>
         /// <returns></returns>
         // GET api/values/5
         [HttpPost]
-        public ActionResult Get(int age, int pageIndex, int pageSize)
+        public ActionResult Get(string Name)
         {
-            RedisCache _redisCache = new RedisCache();
             List<SYSUser> user = new List<SYSUser>();
-            string ba = _isysUser.getAop(1);
 
-            Expression<Func<SYSUser, bool>> where = a => true;
+            user = _IsysUser.QueryStrAsync(a => a.Name == Name).Result;
+            return Json(user);
+        }
 
-            where = where.And(b => b.Age == age);
-            where = where.And(c => c.LoginPwd == "10");
-            if (_redisCache.Exist("data" + age))
+        /// <summary>
+        /// Redis
+        /// </summary>
+        /// <param name="loginName">用户名</param>
+        /// <returns></returns>
+        // GET api/values/5
+        [HttpGet]
+        public SYSUser GetRidis(string loginName)
+        {
+            //RedisCache _redisCache = new RedisCache();
+
+            SYSUser userItem = new SYSUser();
+            if (_IredisCache.Exist(loginName))
             {
-                user = _redisCache.Get<List<SYSUser>>("data" + age);
+                userItem = _IredisCache.Get<SYSUser>(loginName);
             }
             else
             {
-                user = _isysUser.QueryStrAsync(where).Result;
-                _redisCache.Set("data" + age, user, TimeSpan.FromSeconds(30));
+                Task<List<SYSUser>> paramQueryData = _IsysUser.QueryStrAsync(a => a.LoginName == loginName);
+                userItem = paramQueryData.Result.FirstOrDefault();
+                _IredisCache.Set(loginName, userItem);
             }
-            _redisCache.Set("data1", user);
-
-            var data = new
-            {
-                lambda = user,
-            };
-            MessageModel<object> resule = new MessageModel<object>();
-            resule.success = true;
-            resule.msg = "Ok";
-            resule.data = data;
-            return Json(resule);
+            return userItem;
         }
+
 
         [HttpPost]
         [Route("GetJwtStr")]
@@ -83,7 +79,7 @@ namespace NetCoreBasicsFrame.Controllers
             string jwtStr = string.Empty;
             bool status = false;
 
-            if (loginName == "Admin" && passWord == "123")
+            if (loginName == "Admin")
             {
                 TokenModelJwt tokenModel = new TokenModelJwt()
                 {

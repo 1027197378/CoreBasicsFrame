@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NetCore.Interfaces.BaseInterface;
+using NetCore.Interfaces;
 using NetCore.Model;
 using System;
 using System.Collections.Generic;

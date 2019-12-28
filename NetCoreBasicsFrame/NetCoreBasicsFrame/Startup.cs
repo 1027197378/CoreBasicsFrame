@@ -23,6 +23,7 @@ using Autofac.Extras.DynamicProxy;
 using NetCore.BasicsFrame;
 using System.Reflection;
 using NetCore.Services;
+using NetCore.Common;
 
 namespace NetCoreBasicsFrame
 {
@@ -35,7 +36,7 @@ namespace NetCoreBasicsFrame
 
         public IConfiguration Configuration { get; }
 
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
@@ -53,9 +54,9 @@ namespace NetCoreBasicsFrame
                 });
                 var xmlPath = Path.Combine(ApplicationEnvironment.ApplicationBasePath, "NetCoreBasicsFrame.xml");
                 s.IncludeXmlComments(xmlPath, true);//默认的第二个参数是false，这个是controller的注释，记得修改
-                var xmlModelPath = Path.Combine(ApplicationEnvironment.ApplicationBasePath, "NetCore.Model.xml");//这个就是Model层的xml文件名
+                //var xmlModelPath = Path.Combine(ApplicationEnvironment.ApplicationBasePath, "NetCore.Model.xml");//这个就是Model层的xml文件名
 
-                s.IncludeXmlComments(xmlModelPath);
+                //s.IncludeXmlComments(xmlModelPath);
                 #endregion
 
                 #region Token绑定到ConfigureServices
@@ -76,7 +77,7 @@ namespace NetCoreBasicsFrame
 
             #endregion
 
-            #region 配置Jwt认证服务
+            #region Jwt认证服务
 
             #region 多个角色授权
             // [Authorize(Policy = "Admin")]
@@ -121,8 +122,12 @@ namespace NetCoreBasicsFrame
 
             services.AddCors();
 
+            services.AddTransient<ISYSUser, SYSUserService>();
+
+            services.AddTransient<IRedisCache, RedisCache>();
+
             #region 依赖注入(AutoFac)
-            return AutofacConfig(services);
+            //return AutofacConfig(services);
             #endregion
 
         }
@@ -162,7 +167,6 @@ namespace NetCoreBasicsFrame
             var builder = new ContainerBuilder();
 
             //builder.RegisterType<SYSUserService>().As<ISYSUser>();//以下RegisterAssemblyTypes
-
             builder.RegisterType<LogAop>();//可以直接替换其他拦截器！一定要把拦截器进行注册
 
             builder.RegisterAssemblyTypes(Assembly.Load("NetCore.Services"))

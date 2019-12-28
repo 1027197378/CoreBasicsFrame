@@ -8394,11 +8394,12 @@
       ]
     },
     "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "/p8IQT2brFMDa7BHMH71LV+w5Tb3OxoLHxhn6+MGqN5xeqhM2HRHmj+7xQGJnaRn73d7ZTvp6yRCFMvolws4wA==",
+      "sha512": "X7IdhILzr4ROXd8mI1BUCQMSHSQwelUlBjF1JyTKCjXaOGn2fB4EKBxQbCK2VjO3WaWIdlXZL3W6TiIVnrhX4g==",
       "type": "package",
       "path": "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
@@ -8420,11 +8421,12 @@
       ]
     },
     "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "JGc0pAWRE8lB4Ucygk2pYSKbUPLlAIq6Bczf5/WF2D/VKJEPtYlVUMxk8fbl1zRfTWzSHi+VcFZlaPlWiNxeKg==",
+      "sha512": "ytoewC6wGorL7KoCAvRfsgoJPJbNq+64k2SqW6JcOAebWsFUvCCYgfzQMrnpvPiEl4OrblUlhF2ji+Q1+SVLrQ==",
       "type": "package",
       "path": "runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
@@ -8851,11 +8853,12 @@
       ]
     },
     "System.Collections.Specialized/4.3.0": {
-      "sha512": "NoPBj0ykejqAWW4p4gGtrrL+3c84ZLSvGnHgq422ew1Rj4WKj1FA8/BCybqC111EtgcqUl6ZJNFYYS22HLgbjA==",
+      "sha512": "Epx8PoVZR0iuOnJJDzp7pWvdfMMOAvpUo95pC4ScH2mJuXkKA2Y4aR3cG9qt2klHgSons1WFh4kcGW7cSXvrxg==",
       "type": "package",
       "path": "system.collections.specialized/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -9036,11 +9039,12 @@
       ]
     },
     "System.ComponentModel.Primitives/4.3.0": {
-      "sha512": "KMVuoQ+8bMQ/Z59M3s64num5AD74X5YSqVc7ibwGkPTfmmkl2W8VuSxLRJtpw4KzQrSKUgR0BLbF0adPfcTSGQ==",
+      "sha512": "j8GUkCpM8V4d4vhLIIoBLGey2Z5bCkMVNjEZseyAlm4n5arcsJOeI3zkUP+zvZgzsbLTYh4lYeP/ZD/gdIAPrw==",
       "type": "package",
       "path": "system.componentmodel.primitives/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -13755,45 +13759,42 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ASUS\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Code\\Core\\CoreBasicsFrame\\NetCoreBasicsFrame\\NetCoreBasicsFrame\\NetCore.BasicsFrame.csproj",
+      "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\GitHub\\NetCoreBasicsFrame\\NetCoreBasicsFrame\\NetCore.BasicsFrame.csproj",
       "projectName": "NetCore.BasicsFrame",
-      "projectPath": "D:\\Code\\Core\\CoreBasicsFrame\\NetCoreBasicsFrame\\NetCoreBasicsFrame\\NetCore.BasicsFrame.csproj",
-      "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "D:\\Code\\Core\\CoreBasicsFrame\\NetCoreBasicsFrame\\NetCoreBasicsFrame\\obj\\",
+      "projectPath": "C:\\Users\\Administrator\\Desktop\\GitHub\\NetCoreBasicsFrame\\NetCoreBasicsFrame\\NetCore.BasicsFrame.csproj",
+      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Administrator\\Desktop\\GitHub\\NetCoreBasicsFrame\\NetCoreBasicsFrame\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "D:\\Code\\Core\\CoreBasicsFrame\\NetCoreBasicsFrame\\NetCore.Common\\NetCore.Common.csproj": {
-              "projectPath": "D:\\Code\\Core\\CoreBasicsFrame\\NetCoreBasicsFrame\\NetCore.Common\\NetCore.Common.csproj"
+            "C:\\Users\\Administrator\\Desktop\\GitHub\\NetCoreBasicsFrame\\NetCore.Common\\NetCore.Common.csproj": {
+              "projectPath": "C:\\Users\\Administrator\\Desktop\\GitHub\\NetCoreBasicsFrame\\NetCore.Common\\NetCore.Common.csproj"
             },
-            "D:\\Code\\Core\\CoreBasicsFrame\\NetCoreBasicsFrame\\NetCore.Interfaces\\NetCore.Interfaces.csproj": {
-              "projectPath": "D:\\Code\\Core\\CoreBasicsFrame\\NetCoreBasicsFrame\\NetCore.Interfaces\\NetCore.Interfaces.csproj"
+            "C:\\Users\\Administrator\\Desktop\\GitHub\\NetCoreBasicsFrame\\NetCore.Interfaces\\NetCore.Interfaces.csproj": {
+              "projectPath": "C:\\Users\\Administrator\\Desktop\\GitHub\\NetCoreBasicsFrame\\NetCore.Interfaces\\NetCore.Interfaces.csproj"
             },
-            "D:\\Code\\Core\\CoreBasicsFrame\\NetCoreBasicsFrame\\NetCore.Model\\NetCore.Model.csproj": {
-              "projectPath": "D:\\Code\\Core\\CoreBasicsFrame\\NetCoreBasicsFrame\\NetCore.Model\\NetCore.Model.csproj"
+            "C:\\Users\\Administrator\\Desktop\\GitHub\\NetCoreBasicsFrame\\NetCore.Model\\NetCore.Model.csproj": {
+              "projectPath": "C:\\Users\\Administrator\\Desktop\\GitHub\\NetCoreBasicsFrame\\NetCore.Model\\NetCore.Model.csproj"
             },
-            "D:\\Code\\Core\\CoreBasicsFrame\\NetCoreBasicsFrame\\NetCore.Services\\NetCore.Services.csproj": {
-              "projectPath": "D:\\Code\\Core\\CoreBasicsFrame\\NetCoreBasicsFrame\\NetCore.Services\\NetCore.Services.csproj"
+            "C:\\Users\\Administrator\\Desktop\\GitHub\\NetCoreBasicsFrame\\NetCore.Services\\NetCore.Services.csproj": {
+              "projectPath": "C:\\Users\\Administrator\\Desktop\\GitHub\\NetCoreBasicsFrame\\NetCore.Services\\NetCore.Services.csproj"
             }
           }
         }
@@ -13842,10 +13843,16 @@
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

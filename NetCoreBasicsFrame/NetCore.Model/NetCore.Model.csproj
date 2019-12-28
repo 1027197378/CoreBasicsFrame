@@ -5,9 +5,10 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\SourceCodeHouse\NetCoreBasicsFrame\NetCore.Model\obj\Debug\netcoreapp2.2\NetCore.Model.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\Administrator\Desktop\CoreBasicsFrame-master\NetCoreBasicsFrame\NetCoreBasicsFrame\bin\Debug\netcoreapp2.2\NetCore.Model.xml</DocumentationFile>
     <WarningLevel>3</WarningLevel>
     <NoWarn>1701;1702;1591</NoWarn>
+    <OutputPath></OutputPath>
   </PropertyGroup>
 
   <ItemGroup>

@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NetCore.Interfaces.BaseInterface
+namespace NetCore.Interfaces
 {
     public interface IBaseInterface<TEntity> where TEntity : class
     {
